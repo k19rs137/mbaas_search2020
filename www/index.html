@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html>Lvl
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -58,7 +58,7 @@ showResults(results);
 
     function showResults(results) {
       // テーブルのヘッダを生成
-      let msg="<table><tr><th>name</th><th>Lvl</th><th>attack</th><th>defence</th></tr>";
+      let msg="<table><tr><th>name</th><th>color</th><th>maker</th><th>noiseCancelling</th><th>price</th><th>wireless</th></tr>";
       for(let i=0; i<results.length; i++) {
         // 各データを収めた表の列を生成
         msg += "<tr>";
@@ -109,7 +109,7 @@ showResults(results);
 }
 
 function searchpriceGT() {
-let level = parseInt($("#price").val(), 10);
+let price = parseInt($("#price").val(), 10);
 let TestDataClass = ncmb.DataStore(db);
 TestDataClass
 .greaterThan("price", price)
