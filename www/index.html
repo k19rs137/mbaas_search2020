@@ -31,9 +31,11 @@
             let newRecord = new TestDataClass();
             newRecord
             .set("name", init_data[i].name)
-            .set("level", init_data[i].level)
-            .set("attack", init_data[i].attack)
-            .set("defence", init_data[i].defence)
+            .set("color", init_data[i].color)
+            .set("maker", init_data[i].maker)
+            .set("noiseCancelling", init_data[i].noiseCancelling)
+             .set("price", init_data[i].price)
+             .set("wireless", init_data[i].wireless )
             .save();
             // bad busy loop...
             let startMsec = new Date();
@@ -61,9 +63,11 @@ showResults(results);
         // 各データを収めた表の列を生成
         msg += "<tr>";
         msg += "<td>" + results[i].name + "</td>";
-        msg += "<td class='num'>" + results[i].level + "</td>";
-        msg += "<td class='num'>" + results[i].attack + "</td>";
-        msg += "<td class='num'>" + results[i].defence + "</td>";
+        msg += "<td>" + results[i].color + "</td>";
+        msg += "<td>" + results[i].maker + "</td>";
+        msg += "<td class='num'>" + results[i].noiseCancelling + "</td>";
+        msg += "<td class='num'>" + results[i].price + "</td>";
+        msg += "<td class='num'>" + results[i].wireless + "</td>";
         msg += "</tr>";
       }
       // テーブルのテイラを生成
@@ -82,33 +86,33 @@ showResults(results);
 })
 }
 
-function searchLevel() {
-let level = parseInt($("#level").val(), 10);
+function searchprice() {
+let price = parseInt($("#price").val(), 10);
 let TestDataClass = ncmb.DataStore(db);
 TestDataClass
-.equalTo("level", level)
+.equalTo("price", price)
 .fetchAll()
 .then(function(results) {
 showResults(results);
 })
 }
 
-function searchLevelLT() {
-let level = parseInt($("#level").val(), 10);
+function searchpriceLT() {
+let price = parseInt($("#price").val(), 10);
 let TestDataClass = ncmb.DataStore(db);
 TestDataClass
-.lessThan("level", level)
+.lessThan("price", price)
 .fetchAll()
 .then(function(results) {
 showResults(results);
 })
 }
 
-function searchLevelGT() {
-let level = parseInt($("#level").val(), 10);
+function searchpriceGT() {
+let level = parseInt($("#price").val(), 10);
 let TestDataClass = ncmb.DataStore(db);
 TestDataClass
-.greaterThan("level", level)
+.greaterThan("price", price)
 .fetchAll()
 .then(function(results) {
 showResults(results);
@@ -124,16 +128,16 @@ showResults(results);
     <input id="name" type="text" placeholder="monster name">
   </div>
   <div>
-    <label for="level">level:</label>
-    <input id="level" type="number" placeholder="monster level">
+    <label for="price">price:</label>
+    <input id="price" type="number" placeholder="monster price">
   </div>
   <div id="button">
     <button class="btn" onclick="fetchAll()">Fetch All</button>
     <button class="btn" onclick="searchName()">Name</button>
     <br>
-<button class="btn" onclick="searchLevelLT()">Level &lt</button>
-    <button class="btn" onclick="searchLevel()">Level</button>
-    <button class="btn" onclick="searchLevelGT()">Level &gt</button>
+<button class="btn" onclick="searchpriceLT()">price &lt</button>
+    <button class="btn" onclick="searchprice()">price</button>
+    <button class="btn" onclick="searchpriceGT()">price &gt</button>
   </div>
   <div id="message">initializing...</div>
 </body>
